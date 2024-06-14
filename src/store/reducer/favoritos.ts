@@ -3,10 +3,12 @@ import { Produto } from '../../App'
 
 type FavoritosState = {
   itens: Produto[]
+  estaNosFavoritos: boolean
 }
 
 const initialState: FavoritosState = {
-  itens: []
+  itens: [],
+  estaNosFavoritos: false
 }
 
 const favoritos = createSlice({
