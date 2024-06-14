@@ -3,12 +3,10 @@ import { Produto } from '../../App'
 
 type FavoritosState = {
   itens: Produto[]
-  estaNosFavoritos: boolean
 }
 
 const initialState: FavoritosState = {
-  itens: [],
-  estaNosFavoritos: false
+  itens: []
 }
 
 const favoritos = createSlice({
@@ -17,13 +15,11 @@ const favoritos = createSlice({
   reducers: {
     favoritar: (state, action: PayloadAction<Produto>) => {
       const itemFavoritado = action.payload
-      if (state.itens.find((p) => p.id === itemFavoritado.id)) {
-        const favoritosSemProduto = state.itens.filter(
-          (p) => p.id !== itemFavoritado.id
-        )
-        state.itens.concat(favoritosSemProduto)
+      const Favoritado = state.itens.find((p) => p.id === itemFavoritado.id)
+      if (Favoritado) {
+        state.itens = state.itens.filter((p) => p.id !== itemFavoritado.id)
       } else {
-        state.itens.push(itemFavoritado)
+        state.itens = [...state.itens, itemFavoritado]
       }
     }
   }

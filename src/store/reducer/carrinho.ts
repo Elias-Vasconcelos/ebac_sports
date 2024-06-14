@@ -18,7 +18,7 @@ const carrinho = createSlice({
       if (state.itens.find((p) => p.id === produtoDocarrinho.id)) {
         alert('Item já adicionado')
       } else {
-        state.itens.push(produtoDocarrinho)
+        state.itens = [...state.itens, produtoDocarrinho]
       }
     }
   }
